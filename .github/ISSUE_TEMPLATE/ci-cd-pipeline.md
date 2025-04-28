@@ -1,7 +1,4 @@
-Here’s the edited issue for integrating Jenkins CI/CD with ArgoCD and EKS:
-
----
-
+H
 ---
 name: "Jenkins CI/CD Integration with ArgoCD and EKS"
 about: "Report or request the integration of Jenkins CI/CD with ArgoCD and Amazon EKS."
