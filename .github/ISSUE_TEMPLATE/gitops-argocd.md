@@ -1,8 +1,8 @@
-name: Link ArgoCD to EKS
-description: Request to configure ArgoCD to deploy to an EKS cluster
+name: "Link ArgoCD to EKS"
+description: "Request to configure ArgoCD to deploy to an EKS cluster"
 title: "[Setup Request] Connect ArgoCD with EKS Cluster"
-labels: [eks, argocd, kubernetes, gitops]
-assignees: []
+labels: "[eks, argocd, kubernetes, gitops]"
+assignees:" [manupanand]"
 
 body:
   - type: markdown
