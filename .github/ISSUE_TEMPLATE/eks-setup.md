@@ -1,76 +1,74 @@
 ---
-name: "EKS Cluster Setup Issue"
-about: "Report or request assistance with setting up an EKS cluster."
-title: "[EKS Setup] Issue with Cluster Deployment or Configuration"
-labels: ["AWS", "EKS", "Terraform", "Ansible", "Vault"]
+name: "ArgoCD to EKS Cluster Integration Issue"
+about: "Request assistance with linking ArgoCD to manage deployments on an EKS cluster."
+title: "[ArgoCD ↔️ EKS] Connect ArgoCD to EKS Cluster"
+labels: ["AWS", "EKS", "ArgoCD", "Kubernetes", "GitOps"]
 assignees: [manupanand]
 ---
 
 ## Description
 
 **As a** DevOps engineer  
-**I want to** set up or troubleshoot an Amazon EKS cluster using Terraform, Ansible, and Vault  
-**So that I can** deploy and manage containerized workloads effectively.
+**I want to** connect ArgoCD to an Amazon EKS cluster  
+**So that I can** deploy and manage Kubernetes applications using GitOps workflows.
 
 ## Requirements
 
-1. **EKS Cluster Details**:
-   - **Region**: Specify AWS region (e.g., `ap-south-1`).
-   - **Kubernetes Version**: [e.g., v1.21]
-   - **Cluster Nodes**:
-     - Node Count: 3
-     - Instance Type: [e.g., t3.medium]
-     - Autoscaling Enabled: Yes/No
-   - **Networking**:
-     - VPC Subnets: Public and private subnets required.
-     - Security Groups: Proper rules for Kubernetes and application traffic.
+1. **EKS Cluster Information**:
+   - **Cluster Name**: [e.g., eks-production-cluster]
+   - **AWS Region**: [e.g., us-west-2]
+   - **Kubernetes Version**: [e.g., v1.27]
+   - **Cluster Access Method**:
+     - Service account (IRSA)
+     - IAM Role assumption
+     - kubeconfig authentication
 
-2. **Terraform Configuration**:
-   - Modules Used: AWS provider, EKS module.
-   - Customization: Specify variable overrides (e.g., VPC CIDR).
+2. **ArgoCD Project/Application Details**:
+   - **Project Name**: [e.g., platform-team-project]
+   - **Application Repositories**:
+     - GitOps Repo URL: [e.g., https://github.com/org/apps-repo]
+   - **Destination Cluster Settings**:
+     - Cluster URL: [e.g., https://ABCDEF.gr7.us-west-2.eks.amazonaws.com]
+     - Namespaces managed: [e.g., default, staging, production]
 
-3. **Ansible Playbooks**:
-   - Configurations Applied: Package installation, node labels, or taints.
+3. **Networking and Access**:
+   - **ArgoCD Connectivity**: Direct (internal) / External via LoadBalancer / Private endpoint
+   - **RBAC Policies**: Namespaces with limited permissions or full-cluster admin
 
-4. **Vault Integration**:
-   - Secrets Used: Kubernetes service account tokens, AWS credentials.
-   - Policies Applied: Ensure least privilege for secrets access.
+4. **Expected Behavior**:
+   - ArgoCD should be able to deploy, sync, and monitor Kubernetes applications on the EKS cluster.
 
-5. **Future Integration**:
-   - CI/CD Tools: Integrate EKS with Jenkins pipelines.
+5. **Optional Enhancements**:
+   - Enable ApplicationSets for dynamic app generation.
+   - Add health checks and auto-sync policies.
 
 ## Steps to Reproduce
 
-1. Clone the repository.
-2. Run Terraform to create infrastructure.
-3. Configure Vault for managing secrets.
-4. Execute Ansible playbooks for node setup.
-5. Verify the EKS cluster status.
+1. Register EKS cluster in ArgoCD via UI or CLI (`argocd cluster add`).
+2. Define Kubernetes apps in Git repository.
+3. Sync apps using ArgoCD UI or automation tools.
 
 ## Expected Outcome
 
-A fully functional EKS cluster deployed using the provided Terraform, Ansible, and Vault configurations. The cluster should be ready for Kubernetes workloads and future integrations.
+ArgoCD should successfully deploy and manage Kubernetes apps on the specified EKS cluster, with healthy sync and status reports.
 
 ## Actual Outcome
 
-_Provide details of any errors, misconfigurations, or issues encountered._
+_Describe any issues, authentication errors, or connectivity problems._
 
 ## Additional Context
 
-- Logs and errors (if any):  
-  _Provide relevant Terraform/Ansible/Vault logs here._
-- Related blockers:  
-  _E.g., AWS IAM role issues, Ansible playbook errors._
-- Dependencies:  
-  _Specify any prerequisite steps or tools required._
+- Logs or errors (kubectl, ArgoCD controller logs, etc.):  
+- IAM Role / Service Account details (if issues seem permissions-related):  
+- Related GitHub repositories or manifests:  
 
 ## Checklist
 
-Before submitting this issue, ensure the following:
-- [x] All requirements are clearly listed.
-- [x] Logs or screenshots are included for troubleshooting (if applicable).
-- [x] The issue title is descriptive and concise.
+Before submitting:
+- [x] EKS cluster details are provided.
+- [x] GitOps repo information is clear.
+- [x] Authentication/access method is specified.
 
 ---
 
-### Thank you for your contribution!
+### Thank you for advancing GitOps practices in our infrastructure! ☸️🚀
