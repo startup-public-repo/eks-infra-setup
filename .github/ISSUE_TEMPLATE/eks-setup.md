@@ -26,7 +26,7 @@ assignees: [manupanand]
 2. **ArgoCD Project/Application Details**:
    - **Project Name**: [e.g., platform-team-project]
    - **Application Repositories**:
-     - GitOps Repo URL: [e.g.,https://github.com/startup-public-repo/ci-cd-jenkins-pipeline]
+     - GitOps Repo URL: [e.g.,https://github.com/startup-public-repo/repo]
    - **Destination Cluster Settings**:
      - Cluster URL: [e.g., https://ABCDEF.gr7.us-west-2.eks.amazonaws.com]
      - Namespaces managed: [e.g., default, staging, production]
