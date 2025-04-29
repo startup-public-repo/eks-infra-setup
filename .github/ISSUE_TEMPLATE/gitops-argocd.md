@@ -1,66 +1,75 @@
-name: Link Jenkins to ArgoCD
-description: Request to integrate Jenkins pipeline with ArgoCD GitOps deployment
-title: "[Integration Request] Link Jenkins Pipeline with ArgoCD"
-labels: [jenkins, argocd, gitops, ci-cd]
-assignees: [manupanand]
+name: Link ArgoCD to EKS
+description: Request to configure ArgoCD to deploy to an EKS cluster
+title: "[Setup Request] Connect ArgoCD with EKS Cluster"
+labels: [eks, argocd, kubernetes, gitops]
+assignees: []
 
 body:
   - type: markdown
     attributes:
       value: |
-        ## 🧩 Jenkins ↔️ ArgoCD GitOps Integration
-        Use this template to request the linkage of a Jenkins pipeline to trigger or interact with ArgoCD GitOps deployments.
+        ## ☸️ ArgoCD ↔️ EKS Cluster Integration
+        Use this template to request ArgoCD access to a specific Amazon EKS cluster.
 
   - type: input
-    id: jenkins-job-name
+    id: eks-cluster-name
     attributes:
-      label: Jenkins Job Name
-      description: Provide the full name of the Jenkins job or pipeline
-      placeholder: e.g., ci-pipeline-service-a
+      label: EKS Cluster Name
+      description: Name of the EKS cluster to connect with ArgoCD
+      placeholder: eks-prod-cluster
     validations:
       required: true
 
   - type: input
-    id: git-repo
+    id: region
     attributes:
-      label: Git Repository (ArgoCD App Source)
-      description: Provide the Git repository URL linked to ArgoCD
-      placeholder: e.g., https://github.com/org/service-a-gitops
+      label: AWS Region
+      description: Region where the EKS cluster is hosted
+      placeholder: us-west-2
     validations:
       required: true
 
   - type: input
-    id: branch
+    id: iam-role
     attributes:
-      label: Git Branch
-      description: Branch in the repo to monitor or update (typically `main` or `dev`)
-      placeholder: main
+      label: IAM Role for ArgoCD Access (if applicable)
+      description: IAM role ARN ArgoCD will assume to access the EKS cluster (via IRSA or kubeconfig)
+      placeholder: arn:aws:iam::123456789012:role/argocd-access
     validations:
-      required: true
-
-  - type: textarea
-    id: pipeline-action
-    attributes:
-      label: What should the Jenkins job do?
-      description: Should Jenkins update values.yaml? Create a Git commit? Just notify ArgoCD?
-      placeholder: |
-        Example:
-        - Commit updated Docker image tags to GitOps repo
-        - Trigger ArgoCD sync via webhook
-    validations:
-      required: true
+      required: false
 
   - type: input
-    id: argocd-app-name
+    id: argocd-project
     attributes:
-      label: ArgoCD Application Name (if known)
-      description: Optional – Name of the ArgoCD application for targeting sync
-      placeholder: service-a
+      label: ArgoCD Project Name
+      description: Target ArgoCD project to assign the EKS app to
+      placeholder: platform-team
     validations:
       required: false
 
   - type: textarea
-    id: additional-info
+    id: repo-url
     attributes:
-      label: Additional Information
-      description: Any environment, security, or RBAC considerations
+      label: Git Repository for App Configs
+      description: Link to the GitOps repo ArgoCD should use for deployment
+      placeholder: https://github.com/org/app-configs
+    validations:
+      required: true
+
+  - type: textarea
+    id: namespaces
+    attributes:
+      label: Kubernetes Namespaces
+      description: List of namespaces in the EKS cluster ArgoCD should manage
+      placeholder: |
+        - default
+        - staging
+        - app-namespace
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-details
+    attributes:
+      label: Additional Details
+      description: Any extra configuration details, security policies, or restrictions
