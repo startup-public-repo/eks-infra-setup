@@ -1,6 +1,4 @@
 
----
-
 # EKS Infrastructure Setup Using Terraform, Ansible, and Vault
 
 ## Overview
