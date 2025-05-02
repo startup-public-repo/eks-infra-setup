@@ -95,6 +95,3 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 This project is licensed under the [MIT License](LICENSE).
 
----
-
-You can customize this README to include specific details about your setup or additional functionality. Let me know if you'd like any edits or enhancements!
