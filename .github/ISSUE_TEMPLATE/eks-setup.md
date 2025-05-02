@@ -69,6 +69,4 @@ Before submitting:
 - [x] GitOps repo information is clear.
 - [x] Authentication/access method is specified.
 
----
 
-### Thank you for advancing GitOps practices in our infrastructure! ☸️🚀
