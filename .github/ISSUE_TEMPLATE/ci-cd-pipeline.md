@@ -70,10 +70,4 @@ Before submitting this issue, ensure the following:
 - [x] Logs or screenshots are included for troubleshooting (if applicable).
 - [x] The issue title is descriptive and concise.
 
----
 
-### Thank you for your contribution!
-
----
-
-Feel free to adjust or expand this issue as per your specific requirements. Let me know if you need any further refinements! 🚀
