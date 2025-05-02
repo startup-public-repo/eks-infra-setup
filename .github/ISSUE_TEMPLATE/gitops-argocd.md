@@ -1,10 +1,10 @@
-
+---
 name: "Link ArgoCD to EKS"
 about: "Request to configure ArgoCD to deploy to an EKS cluster"
 title: "[Setup Request] Connect ArgoCD with EKS Cluster"
 labels: ["eks", "argocd", "kubernetes", "gitops"]
 assignees: ["manupanand"]
-
+---
 
 ## ☸️ ArgoCD ↔️ EKS Cluster Integration  
 Use this template to request ArgoCD access to a specific Amazon EKS cluster.
