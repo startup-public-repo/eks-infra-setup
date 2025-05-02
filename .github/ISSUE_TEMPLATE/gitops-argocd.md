@@ -1,75 +1,39 @@
+
 name: "Link ArgoCD to EKS"
-description: "Request to configure ArgoCD to deploy to an EKS cluster"
+about: "Request to configure ArgoCD to deploy to an EKS cluster"
 title: "[Setup Request] Connect ArgoCD with EKS Cluster"
-labels: "[eks, argocd, kubernetes, gitops]"
-assignees:" [manupanand]"
+labels: ["eks", "argocd", "kubernetes", "gitops"]
+assignees: ["manupanand"]
+
+
+## ☸️ ArgoCD ↔️ EKS Cluster Integration  
+Use this template to request ArgoCD access to a specific Amazon EKS cluster.
+
 ---
-body:
-  - type: markdown
-    attributes:
-      value: |
-        ## ☸️ ArgoCD ↔️ EKS Cluster Integration
-        Use this template to request ArgoCD access to a specific Amazon EKS cluster.
 
-  - type: input
-    id: eks-cluster-name
-    attributes:
-      label: EKS Cluster Name
-      description: Name of the EKS cluster to connect with ArgoCD
-      placeholder: eks-prod-cluster
-    validations:
-      required: true
+### Request Details  
 
-  - type: input
-    id: region
-    attributes:
-      label: AWS Region
-      description: Region where the EKS cluster is hosted
-      placeholder: us-west-2
-    validations:
-      required: true
+#### EKS Cluster Information  
+- **EKS Cluster Name**: _Specify the cluster name (e.g., `eks-prod-cluster`)_  
+- **AWS Region**: _Specify the AWS region (e.g., `us-west-2`)_  
+- **IAM Role for ArgoCD Access (if applicable)**: _Provide ARN for access (e.g., `arn:aws:iam::123456789012:role/argocd-access`)_  
 
-  - type: input
-    id: iam-role
-    attributes:
-      label: IAM Role for ArgoCD Access (if applicable)
-      description: IAM role ARN ArgoCD will assume to access the EKS cluster (via IRSA or kubeconfig)
-      placeholder: arn:aws:iam::123456789012:role/argocd-access
-    validations:
-      required: false
+#### ArgoCD Configuration  
+- **ArgoCD Project Name**: _Specify the target ArgoCD project (e.g., `platform-team`)_  
+- **Git Repository for App Configs**: _Provide the repo URL (e.g., `https://github.com/org/app-configs`)_  
+- **Kubernetes Namespaces**:  
+  - `default`  
+  - `staging`  
+  - `app-namespace`  
 
-  - type: input
-    id: argocd-project
-    attributes:
-      label: ArgoCD Project Name
-      description: Target ArgoCD project to assign the EKS app to
-      placeholder: platform-team
-    validations:
-      required: false
+#### Additional Details  
+- _Include any extra configuration details, security policies, or restrictions._  
 
-  - type: textarea
-    id: repo-url
-    attributes:
-      label: Git Repository for App Configs
-      description: Link to the GitOps repo ArgoCD should use for deployment
-      placeholder: https://github.com/org/app-configs
-    validations:
-      required: true
+---
 
-  - type: textarea
-    id: namespaces
-    attributes:
-      label: Kubernetes Namespaces
-      description: List of namespaces in the EKS cluster ArgoCD should manage
-      placeholder: |
-        - default
-        - staging
-        - app-namespace
-    validations:
-      required: true
+### ✅ Checklist  
+Before submitting this request, ensure:  
+- [x] All required details are provided.  
+- [x] IAM roles and permissions are validated.  
+- [x] Repo access is confirmed for ArgoCD.  
 
-  - type: textarea
-    id: additional-details
-    attributes:
-      label: Additional Details
-      description: Any extra configuration details, security policies, or restrictions
